@@ -15,6 +15,8 @@ types = [
     "lines",
     "spaces",
     "words",
+    "hashtags",
+    "total_hashtags",
     "links",
     "urls",
     "domains"
@@ -48,6 +50,10 @@ async def extract(bot, update):
                 text = string_extract.spaces(string)
             elif type == "words":
                 text = string_extract.words(string)
+            elif type == "hashtags":
+                text = "\n".join(string_extract.hashtags(string))
+            elif type == "total_hashtags":
+                text = string_extract.total_hashtags(string)
             elif type == "links":
                 text = string_extract.links(string)
             elif type == "urls":
@@ -55,7 +61,7 @@ async def extract(bot, update):
             elif type == "domains":
                 text = "\n".join(domain_extract.string_domains(string))
             await update.reply_text(
-                text=text,
+                text=str(text),
                 quote=True,
                 disable_web_page_preview=True
             )
