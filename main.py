@@ -1,5 +1,6 @@
 import os
 import string_extract
+import hashtags_extract
 import domain_extract
 from pyrogram import Client, filters
 
@@ -51,9 +52,9 @@ async def extract(bot, update):
             elif type == "words":
                 text = string_extract.words(string)
             elif type == "hashtags":
-                text = "\n".join(string_extract.hashtags(string))
+                text = "\n".join(hashtags_extract.hashtags(string, hash=True))
             elif type == "total_hashtags":
-                text = string_extract.total_hashtags(string)
+                text = len(hashtags_extract.hashtags(string))
             elif type == "links":
                 text = string_extract.links(string)
             elif type == "urls":
