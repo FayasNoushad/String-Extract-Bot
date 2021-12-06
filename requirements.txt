@@ -1,4 +1,5 @@
 pyrogram
 tgcrypto
 string-extract
+hashtags-extract
 domain-extract
